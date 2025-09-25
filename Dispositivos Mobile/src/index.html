@@ -1,0 +1,149 @@
+<!DOCTYPE html> 
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <title> Troca de cor por horario</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APP Tempo</title>
+   <!-- Mafest do PWA-->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="000000">
+    
+</head>
+<body>
+    <div class="caixa"> 
+    <h1 id="titulo"> Bem Vindo(a)!</h1>
+    <p id="hora"></p>
+    <p id="data"></p>
+    <p id="diaTipo"></p>
+    <p id="frase"></p>
+  </div>
+  
+  <script>  
+    function trocar() {
+      const agora = new Date();
+      const hora = agora.getHours();
+      const minutos = agora.getMinutes().toString().padStart(2, "0");
+      const segundos = agora.getSeconds().toString().padStart(2, "0");
+      const opcoes = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      const dataFormatada = agora.toLocaleDateString("pt-BR", opcoes);
+      const diaSemana = agora.getDay();
+
+        let imagem;
+        let mensagem;
+
+        if (hora >= 6 && hora < 12) {
+          
+          mensagem = "Bom Dia! ";
+        imagem ="url(imagem/manha.jpg)";
+        frases = [
+          " Tenha um bom dia",
+          "Levante e tome seu café",
+          "Se programe e organize seu dia com qualidade."
+         ];
+        }else if (hora >= 12 && hora < 18) {
+        imagem ="url(imagem/tarde.jpg)";
+        mensagem = "Boa tarde!";
+        frases = [
+          "Boa Tarde! que o resto do dia seja ainda melhor.",
+          "Passando pra desejar uma tarde cheia de coisas boas.",
+          "Boa tarde! já bateu aquele soninho pós-almoço ou tá firme e forte."
+         ];
+        }else if (hora >=18 && hora < 23) {
+          imagem ="url(imagem/ee.jpg)";
+          mensagem = "Boa Noite!";
+          frases = [
+          "Boa noite! descanse bem.",
+          "Que a sua noite seja tranquila e cheia de bons sonhos.",
+          "Depois de um dia longo, que venha um descanso merecido."
+         ];
+        } else {
+          imagem ="url(imagem/lua.jpg)";
+          mensagem = "Hora de descansar";
+          frases = [
+          "É madrugada e tudo está quieto...menos a mente, que resolveu fazer hora extra",
+          "Aproveite para descansar.",
+          "Recarregue suas energias eita gloria."
+         ];
+          
+     }  
+
+    // Dia da semana
+      if (diaSemana === 0 || diaSemana === 6) {
+        tipoDia = " Hoje é fim de semana! Aproveite para passear.";
+      } else {
+        tipoDia = " Hoje é dia útil, dia de Trabalhar.";
+      }
+
+      document.body.style.backgroundImage = imagem;
+      document.getElementById("titulo").innerHTML = mensagem;
+      document.getElementById("hora").innerHTML = "Agora são " + hora + ":" + minutos + ":" + segundos;
+      document.getElementById("data").innerHTML = "🗓️" + dataFormatada;
+      document.getElementById("diaTipo").innerHTML = "🗒️ " + tipoDia;
+    }
+    
+    
+     
+
+
+    let frases = [];
+    function trocarFrase(){
+      if (frases.length > 0) {
+        const fraseAleatoria = frases[Math.floor(Math.random() * frases.length)];
+        document.getElementById("frase").innerHTML = fraseAleatoria;
+      }
+    }
+    trocar();
+    setInterval(trocar, 1000); // atualizar hora
+    trocarFrase();
+    setInterval(trocarFrase, 5000); // trocar frase
+
+  </script>
+  <script>
+    if ("serviceworker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js")
+       .then(( ) => console.log("Service Worker registrado"))
+       .catch(err => console.log(" Erro no SW:", err));
+      
+    }
+  </script>
+
+ <style>
+
+body {
+   transition: background-color 1s;
+      font-family: Arial, sans-serif;
+      color: rgb(250, 210, 210);
+      text-align: center;
+      padding-top: 70px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+}
+
+.caixa {
+
+  color: #c4aaaa;
+      background-color: transparent;
+      padding: 6px 10px;
+      margin-bottom: 5px;
+      align-items: center;
+      display: block;
+      justify-content: center;
+      display: inline-block;
+      display: flex;
+      margin-right: 20px;
+      list-style: none;   /* Remove os marcadores de lista */
+      cursor:pointer
+      
+}
+
+
+
+
+
+ </style>
+
+</body>
+
+</html>
