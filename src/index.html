@@ -11,7 +11,7 @@
     
 </head>
 <body>
-    <div caixa> 
+    <div class="caixa"> 
     <h1 id="titulo"> Bem Vindo(a)!</h1>
     <p id="hora"></p>
     <p id="data"></p>
@@ -37,40 +37,40 @@
           mensagem = "Bom Dia! ";
         imagem ="url(imagem/manha.jpg)";
         frases = [
-          "bom dia",
-          "dia",
-          "bom bom dia"
+          " Tenha um bom dia",
+          "Levante e tome seu café",
+          "Se programe e organize seu dia com qualidade."
          ];
         }else if (hora >= 12 && hora < 18) {
         imagem ="url(imagem/tarde.jpg)";
         mensagem = "Boa tarde!";
         frases = [
-          "bom dia",
-          "dia",
-          "bom bom dia"
+          "Boa Tarde! que o resto do dia seja ainda melhor.",
+          "Passando pra desejar uma tarde cheia de coisas boas.",
+          "Boa tarde! já bateu aquele soninho pós-almoço ou tá firme e forte."
          ];
         }else if (hora >=18 && hora < 23) {
           imagem ="url(imagem/ee.jpg)";
           mensagem = "Boa Noite!";
           frases = [
-          "bom dia",
-          "dia",
-          "bom bom dia"
+          "Boa noite! descanse bem.",
+          "Que a sua noite seja tranquila e cheia de bons sonhos.",
+          "Depois de um dia longo, que venha um descanso merecido."
          ];
         } else {
           imagem ="url(imagem/lua.jpg)";
           mensagem = "Hora de descansar";
           frases = [
-          "bom dia",
-          "dia",
-          "bom bom dia"
+          "É madrugada e tudo está quieto...menos a mente, que resolveu fazer hora extra",
+          "Aproveite para descansar.",
+          "Recarregue suas energias eita gloria."
          ];
           
      }  
 
     // Dia da semana
       if (diaSemana === 0 || diaSemana === 6) {
-        tipoDia = " Hoje é fim de semana! Aproveite para arrumar a casa e descansar.";
+        tipoDia = " Hoje é fim de semana! Aproveite para passear.";
       } else {
         tipoDia = " Hoje é dia útil, dia de Trabalhar.";
       }
@@ -121,7 +121,7 @@ body {
       background-position: center;
 }
 
-caixa {
+.caixa {
 
   color: #c4aaaa;
       background-color: transparent;
